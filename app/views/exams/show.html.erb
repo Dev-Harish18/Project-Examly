@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @exam.subject %>
+</p>
+
+<p>
+  <strong>Instructions:</strong>
+  <%= @exam.instructions %>
+</p>
+
+<p>
+  <strong>Pass mark:</strong>
+  <%= @exam.pass_mark %>
+</p>
+
+<p>
+  <strong>Total marks:</strong>
+  <%= @exam.total_marks %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @exam.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @exam.end_time %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @exam.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_exam_path(@exam) %> |
+<%= link_to 'Back', exams_path %>
