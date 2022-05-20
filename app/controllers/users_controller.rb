@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Sign up successful"
+      session[:user_id] = @user.id
       redirect_to root_path
     elsif params[:role] == "student"
       puts "student"

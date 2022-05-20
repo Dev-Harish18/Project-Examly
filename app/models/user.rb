@@ -2,6 +2,9 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
   
   has_secure_password
+  has_many :exams, dependent: :destroy
+  has_many :results, dependent: :destroy
+  has_many :answers, dependent: :destroy
   
   validates :full_name, presence: true, 
                       length: { minimum: 3, maximum: 25 }

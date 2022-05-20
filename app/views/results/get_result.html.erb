@@ -1,0 +1,49 @@
+<div class="row container card px-4 pt-3 px-lg-5 pt-lg-5 py-3 my-3">
+
+  <h1 class="mb-5 mt-3 text-primary"><%= @exam.subject.titleize %> Examination's result</h1>
+
+  <p class="my-2">
+    <strong class="mr-2">Name:</strong>
+    <%= @result.user.full_name.titleize %>
+  </p>
+  
+  <p class="my-2">
+    <strong class="mr-2">Roll number:</strong>
+    <%= @result.user.roll_no %>
+  </p>
+
+  <p class="my-2">
+    <strong class="mr-2">Marks Obtained:</strong>
+    <%= @result.marks %> / <%= @exam.total_marks %>
+  </p>
+  
+  <p class="my-2">
+    <strong class="mr-2">Percentage:</strong>
+    <%= @result.percentage %> %
+  </p>
+
+  <p class="my-2">
+    <strong class="mr-2">Status:</strong>
+    <%= @result.status.titleize %>
+  </p>
+</div>
+
+<div class="container card p-4">
+  <div class="row justify-content-center">
+      <div class="col-12">
+          <% @exam.questions.each_with_index do |question, idx|%>
+              <div class="form-group row">
+                <p class="col-12 font-weight-bold">  <%="#{idx + 1}. #{question.question}"%> </p>
+                <p class="font-weight-bold ml-auto">( <%= @answers[idx].marks %> marks)</p>
+                <div class="col-12"> 
+                  <textarea id="text-area-disabled" rows="5" disabled class="form-control shadow rounded"><%= @answers[idx].answer.strip%></textarea>
+                </div>
+              </div>
+
+              <% unless idx == (@exam.questions.count - 1) %>
+                <hr class="border"/>
+              <% end %>
+          <% end %>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="container pt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <%= render 'shared/errors', obj: @question %>
+      <%= form_with(model: @question, url: "/exams/#{@exam.id}/questions/#{@question.id}", method: :put, class: "form shadow card p-4 p-lg-5 mb-5 mx-auto") do |f| %>
+      
+        <h1 class="text-center mb-5 text-primary font-weight-bold">Edit Question</h1>
+
+        <div class="form-group row mb-2">
+          <%= f.label :Exam, class: "col-12" %>
+          <div class="col-12">
+            <%= f.text_field :subject, class: "form-control shadow rounded",placeholder: @exam.subject,readonly: true, required: true%>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <%= f.label "Question", class: "col-12" %>
+          <div class="col-12"> 
+              <%= f.text_area :question, class: "form-control shadow rounded", placeholder: "Enter the question", required: true  %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <%= f.label "Marks", class: "col-12" %>
+          <div class="col-12"> 
+              <%= f.text_field :marks, class: "form-control shadow rounded", placeholder: "Total marks of the question", required: true  %>
+          </div>
+        </div>
+        
+        <div class="form-group row mb-2">
+          <%= f.label "Model answer", class: "col-12" %>
+          <div class="col-12"> 
+              <%= f.text_area :model_answer, class: "form-control shadow rounded", placeholder: "Enter model answer for the question", required: true  %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <%= f.label "Keywords", class: "col-12" %>
+          <div class="col-12"> 
+              <%= f.text_area :keywords, class: "form-control shadow rounded", placeholder: "Enter keywords for the question", required: true  %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <%= f.label "Minimum length", class: "col-12" %>
+          <div class="col-12"> 
+              <%= f.text_field :min_length, class: "form-control shadow rounded", placeholder: "Minimum length of the answer", required: true  %>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <%= f.label "Maximum length", class: "col-12" %>
+          <div class="col-12"> 
+              <%= f.text_field :max_length, class: "form-control shadow rounded", placeholder: "Maximum length of the answer", required: true  %>
+          </div>
+        </div>
+
+        <div class="form-group row mx-auto mb-2">
+          <%= f.submit "Update question",class: "btn btn-lg btn-success m-2" %>
+        </div>
+      <% end %>
+</div>

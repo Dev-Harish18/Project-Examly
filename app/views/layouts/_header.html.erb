@@ -7,17 +7,31 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-      <li class="nav-item active">
-        <%= link_to "Teacher Signup", teachers_sign_up_path, class:"nav-link" %>
-      </li>
+      <%if !logged_in? %>
+        <li class="nav-item active">
+            <%= link_to "Student Signup", students_sign_up_path, class:"nav-link" %>
+        </li>
 
-      <li class="nav-item active">
-        <%= link_to "Student Signup", students_sign_up_path, class:"nav-link" %>
-      </li>
+        <li class="nav-item active">
+          <%= link_to "Teacher Signup", teachers_sign_up_path, class:"nav-link" %>
+        </li>
+      <% elsif current_user.role == "student" %>
+          <li class="nav-item active">
+            <%= link_to "View Result", "/students/results/search", class:"nav-link" %>
+          </li>
 
-      <li class="nav-item active">
-        <%= link_to "Create an exam", students_sign_up_path, class:"nav-link" %>
-      </li>
+          <li class="nav-item active">
+            <%= link_to "Attend Exam", "/exams/search", class:"nav-link" %>
+          </li>
+      <% else %>
+          <li class="nav-item active">
+            <%= link_to "Create an exam", new_exam_path, class:"nav-link" %>
+          </li>
+
+          <li class="nav-item active">
+            <%= link_to "My Exams", "/exams", class:"nav-link" %>
+          </li>
+      <% end %>   
     </ul>
 
     <ul class="navbar-nav ml-auto">

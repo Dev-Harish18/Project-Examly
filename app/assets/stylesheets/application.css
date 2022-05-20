@@ -30,6 +30,11 @@
  .card{
    background-color: white;
    border-radius: 20px;
+   border-left: 8px solid #017BFE;
+ }
+
+ .badge{
+  font-size: 18px;
  }
 
  input{
@@ -71,9 +76,61 @@
  nav{
   font-weight: 600;   
  }
-/* 
- .profile-card-container{
- } */
+
+ .search-exam-img{
+  width: 100%;
+  height: 100%; 
+ }
+
+ .datetime select:nth-child(1) {
+  width: 130px;
+  text-indent: 15px;
+}
+
+.icon img{
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}
+
+.icon{
+  border-radius: 10px;
+}
+
+.exam-container{
+  position: relative;
+  display: flex;
+  place-items: center;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+.result-img{
+  display: inline-block;
+  max-height: 200px;
+  object-fit: contain;
+}
+.exam-card{
+  width:200px;
+}
+.datetime select {
+  padding:10px;
+  margin:10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+/* .publish a{
+  position: fixed;
+  z-index: 50;
+  background-color: rgba(0,0,0,0.5);
+  right:10%;
+  border: none;
+  top:10%;
+} */
+#text-area-disabled{
+  background-color: white;
+}
 
  @media only screen and (max-width: 768px) {
   /* For mobile phones: */
@@ -90,5 +147,16 @@
     min-width:10vw;
     min-height:10vh;
     background-color: white;
+  }
+  .datetime select {
+    padding:5px;
+    margin:8px auto;
+  }
+
+  .exam-container{
+    display: flex;
+    place-items: center;
+    flex-wrap:wrap;
+    gap: 1rem;
   }
 }

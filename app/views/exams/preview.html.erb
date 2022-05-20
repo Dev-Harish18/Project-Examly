@@ -1,17 +1,16 @@
 <div class="row container card px-4 pt-3 px-lg-5 pt-lg-5 py-3 my-3">
 
-  <h1 class="mb-5 mt-3 text-primary"><%= @exam.subject.titleize %> Examination</h1>
+  <h1 class="text-primary mb-5 mt-3"><%= @exam.subject.titleize %> Examination</h1>
 
   <p class="my-2">
     <strong class="mr-2">Instructions:</strong>
-    <%= @exam.instructions %>
+    <ol>
+      <% @exam.instructions.split(",").each do |instruction| %>
+        <li> <%= instruction %> </li>
+      <% end %>
+    </ol>
   </p>
   
-  <p class="my-2">
-    <strong class="mr-2">Exam Code:</strong>
-    <%= @exam.exam_code %>
-  </p>
-
   <p class="my-2">
     <strong class="mr-2">Pass mark:</strong>
     <%= @exam.pass_mark %>
@@ -31,16 +30,10 @@
     <strong class="mr-2">End time:</strong>
     <%= @exam.end_time %>
   </p>
-
-  <p class="my-2 ml-auto">
-    <%= link_to "Edit", edit_exam_path(@exam), class:"btn btn-warning" %>
+ 
+  <p class="my-2 mx-auto">
+    <%=link_to "Start Test", "answersheet", class: "btn btn-lg btn-success my-2" %>
   </p>
 </div>
-<!-- Questions -->
-<% @exam.questions.each do |question|%>
-  <%= render "question", question: question%>
-<% end %>
-<p class="m-2 mr-auto">
-  <%=link_to "Add Question", "/exams/#{@exam.id}/questions/new", class: "btn btn-success my-2" %>
-</p>
+
 

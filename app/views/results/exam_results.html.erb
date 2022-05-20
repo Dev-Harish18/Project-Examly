@@ -1,0 +1,32 @@
+<h1 class="text-center mt-3"><%= @exam.subject.titleize %> Results</h1>
+
+<div class="exam-container container row p-3 p-lg-5 text-center my-2">
+
+    <% if @exam.results && @exam.results.count == 0%>
+        <div class="col-12 col-lg-8 mx-auto container">
+            <h3 class="text-center text-primary font"> No results found for this exam</h3>
+        </div>
+    <% end %>
+
+    <% @exam.results.each do |result| %>
+      <div class="exam-card card col-12 col-lg-4 mx-auto">
+        <%= image_tag "results_illustration.jpeg" ,class:"card-img-top mx-auto result-img" %>
+        <div class="card-body m-0 p-0 pb-2">
+          <h3 class="card-title text-primary font"><%= result.user.full_name.titleize %></h3>
+          <h6 class="card-text font"><%= result.user.roll_no %></h6>
+          <h1 class="card-text badge badge-<%= result.status == "pass" ? "success" : "danger" %>" ><%= result.status.titleize %></h1>
+          <h6 class="card-text font"><%= result.percentage %> %</h6>
+          <hr/>
+          <div class="row p-1">
+            <%= link_to("View", "/exams/#{@exam.id}/results/#{result.id}", class: "btn btn-primary icon mx-auto col-4") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+</div>
+
+<% if @exam.results && @exam.results.count != 0%>
+        <div class="row mx-auto container p-3 p-lg-5 text-center pt-0 mt-0 text-center">
+            <%= link_to "Publish Result", "/exams/#{@exam.id}/publish", method: :put, class: "btn btn-primary btn-lg ml-2" %>
+        </div>
+<% end %>
