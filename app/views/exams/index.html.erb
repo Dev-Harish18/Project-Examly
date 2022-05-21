@@ -1,6 +1,6 @@
 <h1 class="text-center">My Exams</h1>
 
-<div class="exam-container container row p-5 mx-auto text-center my-2 d-flex flex-nowrap align-items-center my-auto">
+<div class="exam-container container row p-3 p-lg-5 text-center my-2">
     <% if @exams && @exams.count == 0%>
       <div class="col-12 col-lg-8 mx-auto container"> 
         <%if current_user.role == "student"%>

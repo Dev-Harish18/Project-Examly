@@ -8,7 +8,6 @@ class ResultsController < ApplicationController
   end
 
   def find_result #Post call
-    # debugger
     @exam = Exam.find_by(exam_code: params[:exam_code])
     
     unless @exam.blank?
@@ -20,7 +19,7 @@ class ResultsController < ApplicationController
         redirect_to "/exams/#{@exam.id}/results/#{@result.id}"
       end
     else
-      flash.now[:alert] = "No exams found for the given exam code"
+      flash[:alert] = "No exams found for the given exam code"
       redirect_back(fallback_location: root_path)
     end
     # debugger
